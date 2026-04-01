@@ -7,7 +7,10 @@ Ejemplos inválidos: VV, LL, DD
 """
 
 def validar_repeticiones_vld(cadena: str) -> bool:
-    """
+    patrones_invalidos = ("VV", "LL", "DD")
+    return all(patron not in cadena for patron in patrones_invalidos)
+
+"""
     Valida que los símbolos V, L y D no se repitan (máximo 1).
 
     Nivel 3: Análisis Sintáctico - Repeticiones de símbolos únicos
@@ -33,5 +36,5 @@ def validar_repeticiones_vld(cadena: str) -> bool:
         False
         >>> validar_repeticiones_vld("DD")
         False
-    """
-    raise NotImplementedError()
+"""
+
