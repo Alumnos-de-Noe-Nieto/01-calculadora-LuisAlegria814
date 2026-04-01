@@ -61,4 +61,38 @@ def evaluar(expresion: str) -> int:
         >>> evaluar('MMMCMXCIX + I')
         4000
     """
-    raise NotImplementedError()
+
+    tokens = parsear_expresion(expresion)
+
+    tokens = [t for t in tokens if t.tipo != "ESPACIO"]
+
+    if not tokens:
+        raise ExpresionInvalida("La expresión está vacía")
+
+    if tokens[0].tipo != "ROMANO":
+        raise ExpresionInvalida("La expresión debe iniciar con un número romano")
+
+    resultado = romano_a_entero(tokens[0].valor)
+
+    i = 1
+    while i < len(tokens):
+        operador = tokens[i]
+        siguiente = tokens[i + 1]
+
+        valor = romano_a_entero(siguiente.valor)
+
+        if operador.tipo == "SUMA":
+            resultado += valor
+        elif operador.tipo == "RESTA":
+            resultado -= valor
+        else:
+            raise ExpresionInvalida("Operador inválido")
+
+        i += 2
+
+    if resultado <= 0:
+        raise ExpresionInvalida(
+            f'El resultado de la expresión "{expresion}" no es positivo'
+        )
+
+    return resultado

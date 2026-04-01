@@ -14,7 +14,46 @@ from calculadora.validaciones.alfabeto import validar_simbolos
 
 
 def romano_a_entero(cadena: str) -> int:
-    """
+    if not validar_simbolos(cadena):
+        raise ExpresionInvalida("contiene símbolos inválidos")
+
+    if not validar_repeticiones_icxm(cadena):
+        raise ExpresionInvalida("repetición inválida de I/X/C/M")
+
+    if not validar_repeticiones_vld(cadena):
+        raise ExpresionInvalida("repetición inválida de V/L/D")
+
+    if not validar_orden_descendente(cadena):
+        raise ExpresionInvalida("orden descendente inválido")
+
+    if not validar_restas(cadena):
+        raise ExpresionInvalida("restas inválidas")
+
+    valores = {
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000,
+    }
+
+    total = 0
+    valor_previo = 0
+
+    for simbolo in reversed(cadena):
+        valor = valores[simbolo]
+
+        if valor < valor_previo:
+            total -= valor
+        else:
+            total += valor
+
+        valor_previo = valor
+
+    return total
+"""
     Convierte una cadena de números romanos válida a su valor entero correspondiente.
 
     Nivel 6: Generación de Código - Conversión Romano → Entero
@@ -29,23 +68,7 @@ def romano_a_entero(cadena: str) -> int:
     Returns:
         int: El valor entero correspondiente
 
-    Examples:
-        >>> romano_a_entero("I")
-        1
-        >>> romano_a_entero("V")
-        5
-        >>> romano_a_entero("IV")
-        4
-        >>> romano_a_entero("IX")
-        9
-        >>> romano_a_entero("XIV")
-        14
-        >>> romano_a_entero("MCMXCIV")
-        1994
-        >>> romano_a_entero("MMMCMXCIX")
-        3999
-
     Raises:
-        ExpresionInvalida: Si la cadena no es válida según las reglas de números romanos (símbolos inválidos, repeticiones inválidas, orden incorrecto, restas inválidas)
-    """
-    raise NotImplementedError()
+        ExpresionInvalida: Si la cadena no es válida
+"""
+

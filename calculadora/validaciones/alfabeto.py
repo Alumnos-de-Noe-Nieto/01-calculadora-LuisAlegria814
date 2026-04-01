@@ -3,7 +3,15 @@ Nivel 1: Análisis Léxico - Alfabeto (Σ = {I, V, X, L, C, D, M})
 """
 
 def validar_simbolos(cadena: str) -> bool:
-    """
+    cadena = cadena.strip()
+
+    if not cadena:
+        return False
+
+    alfabeto = {"I", "V", "X", "L", "C", "D", "M"}
+
+    return set(cadena).issubset(alfabeto)
+"""
     Valida si todos los caracteres de la cadena pertenecen al alfabeto romano.
 
     💡 PISTA: Usa .strip() para eliminar espacios en blanco laterales
@@ -29,5 +37,5 @@ def validar_simbolos(cadena: str) -> bool:
         False
         >>> validar_simbolos("  XIV  ")
         True
-    """
-    raise NotImplementedError()
+ """
+

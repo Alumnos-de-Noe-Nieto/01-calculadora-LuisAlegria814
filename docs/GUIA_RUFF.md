@@ -375,13 +375,13 @@ Sí, es completamente normal. Con la práctica, escribir código que cumple las 
 
 Antes de hacer commit y push a GitHub, verifica:
 
-- [ ] Ejecuté `ruff check calculadora/ --fix`
-- [ ] Corregí todos los errores rojos (CRÍTICOS: E, F)
-- [ ] Corregí los errores naranjas (IMPORTANTES: A, C4, BLE, I, W)
-- [ ] Corregí los errores amarillos (EDUCATIVOS: B, SIM, UP, N)
-- [ ] `ruff check calculadora/` muestra "All checks passed!"
-- [ ] Mi código se ejecuta sin errores de sintaxis
-- [ ] Mis pruebas pasan: `pytest tests/ -v`
+- [X] Ejecuté `ruff check calculadora/ --fix`
+- [X] Corregí todos los errores rojos (CRÍTICOS: E, F)
+- [X] Corregí los errores naranjas (IMPORTANTES: A, C4, BLE, I, W)
+- [X] Corregí los errores amarillos (EDUCATIVOS: B, SIM, UP, N)
+- [X] `ruff check calculadora/` muestra "All checks passed!"
+- [X] Mi código se ejecuta sin errores de sintaxis
+- [X] Mis pruebas pasan: `pytest tests/ -v`
 
 ---
 
